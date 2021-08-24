@@ -17,9 +17,9 @@
   "author": "Alcimar Carlos de L V e Aires",
   "license": "MIT",
   "devDependencies": {
-    "@capacitor/android": "^2.4.2",
-    "@capacitor/core": "^2.4.2",
-    "@capacitor/ios": "^2.4.2",
+    "@capacitor/android": "^2.4.9",
+    "@capacitor/core": "^2.4.9",
+    "@capacitor/ios": "^2.4.9",
     "@ionic/prettier-config": "^1.0.0",
     "@ionic/swiftlint-config": "^1.0.0",
     "@rollup/plugin-node-resolve": "^8.1.0",
@@ -30,9 +30,7 @@
     "swiftlint": "^1.0.1",
     "typescript": "~3.8.3"
   },
-  "peerDependencies": {
-    "@capacitor/core": "^2.4.2"
-  },
+  "peerDependencies": {},
   "files": [
     "dist/",
     "ios/",
