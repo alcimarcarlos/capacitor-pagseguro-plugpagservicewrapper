@@ -14,43 +14,41 @@ export class PlugPagServiceWrapperWeb extends WebPlugin implements PlugPagServic
     return options;
   }
 
-  async getContacts(filter: string): Promise<{ results: any[] }> {
-    console.log('Contacts filter', filter);
+  async getLibVersion(): Promise<{ results: any[] }> {
+    console.log('LibVersion');
     return {
       results: []
     };
   }
 
-  async getLibVersion(filter: string): Promise<{ results: any[] }> {
-    console.log('LibVersion filter', filter);
+  async reprintStablishmentReceipt(): Promise<{ results: any[] }> {
+    console.log('ReprintStablishmentReceipt');
     return {
       results: []
     };
   }
 
-  async reprintStablishmentReceipt(filter: string): Promise<{ results: any[] }> {
-    console.log('ReprintStablishmentReceipt filter', filter);
+  async reprintCustomerReceipt(): Promise<{ results: any[] }> {
+    console.log('ReprintCustomerReceipt');
     return {
       results: []
     };
   }
 
-  async reprintCustomerReceipt(filter: string): Promise<{ results: any[] }> {
-    console.log('ReprintCustomerReceipt filter', filter);
+  async getLastApprovedTransaction(): Promise<{ results: any[] }> {
+    console.log('GetLastApprovedTransaction',);
     return {
       results: []
     };
   }
 
-  async getLastApprovedTransaction(filter: string): Promise<{ results: any[] }> {
-    console.log('GetLastApprovedTransaction filter', filter);
-    return {
-      results: []
-    };
-  }
-
-  async startPayment(filter: string): Promise<{ results: any[] }> {
-    console.log('startPayment filter', filter);
+  async createPayment(request: {
+    reference: string,
+    type:string, 
+    installments:string,
+    amount: string
+  }): Promise<{ results: any[] }> {
+    console.log('createPayment request', request);
     return {
       results: []
     };

@@ -6,11 +6,14 @@ declare module '@capacitor/core' {
 
 export interface PlugPagServiceWrapperPlugin {
   echo(options: { value: string }): Promise<{ value: string }>;
-  getContacts(filter: string): Promise <{results: any[]}>;
-  getLibVersion(filter: string): Promise <{results: any[]}>;
-  reprintStablishmentReceipt(filter: string): Promise <{results: any[]}>;
-  reprintCustomerReceipt(filter: string): Promise <{results: any[]}>;
-  getLastApprovedTransaction(filter: string): Promise <{results: any[]}>;
-  startPayment(filter: string): Promise <{results: any[]}>;
-
+  getLibVersion(): Promise <{results: any[]}>;
+  reprintStablishmentReceipt(): Promise <{results: any[]}>;
+  reprintCustomerReceipt(): Promise <{results: any[]}>;
+  getLastApprovedTransaction(): Promise <{results: any[]}>;
+  createPayment(request : {
+    reference: string,
+    type:string, 
+    installments:string,
+    amount: string
+  }): Promise <{results: any[]}>;
 }
