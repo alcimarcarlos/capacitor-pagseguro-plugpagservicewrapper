@@ -46,7 +46,7 @@ repositories {
 
 
 dependencies {
-    implementation 'br.com.uol.pagseguro.plugpagservice.wrapper:wrapper:1.12.0'
+    implementation 'br.com.uol.pagseguro.plugpagservice.wrapper:wrapper:1.16.1'
     implementation 'com.google.dagger:dagger:2.24'
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation project(':capacitor-android')
