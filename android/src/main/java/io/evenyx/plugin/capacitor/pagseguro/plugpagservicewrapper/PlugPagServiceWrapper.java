@@ -1,13 +1,9 @@
 package io.evenyx.plugin.capacitor.pagseguro.plugpagservicewrapper;
 
-import android.Manifest;
 import android.app.AlertDialog;
-import android.content.ContentResolver;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.pm.PackageManager;
-import android.database.Cursor;
-import android.provider.ContactsContract;
+import android.os.Environment;
 import android.util.Log;
 
 import com.getcapacitor.JSObject;
@@ -16,11 +12,12 @@ import com.getcapacitor.Plugin;
 import com.getcapacitor.PluginCall;
 import com.getcapacitor.PluginMethod;
 
-import org.json.JSONArray;
+import org.apache.commons.io.FileUtils;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
+import java.io.File;
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
 
 import br.com.uol.pagseguro.plugpagservice.wrapper.PlugPag;
 import br.com.uol.pagseguro.plugpagservice.wrapper.PlugPagActivationData;
@@ -29,6 +26,7 @@ import br.com.uol.pagseguro.plugpagservice.wrapper.PlugPagCustomPrinterLayout;
 import br.com.uol.pagseguro.plugpagservice.wrapper.PlugPagInitializationResult;
 import br.com.uol.pagseguro.plugpagservice.wrapper.PlugPagPaymentData;
 import br.com.uol.pagseguro.plugpagservice.wrapper.PlugPagPrintResult;
+import br.com.uol.pagseguro.plugpagservice.wrapper.PlugPagPrinterData;
 import br.com.uol.pagseguro.plugpagservice.wrapper.PlugPagTransactionResult;
 import dagger.Provides;
 
@@ -125,6 +123,27 @@ public class PlugPagServiceWrapper extends Plugin {
 
         JSObject ret = new JSObject();
         ret.put("results", results);
+        call.success(ret);
+    }
+
+    @PluginMethod
+    public void printTicket(PluginCall call) throws IOException {
+
+        FileUtils.copyURLToFile(
+                new URL("https://evenyx-www.s3.amazonaws.com/assets/images/TICKET-FRENTE.jpg"),
+                new File(Environment.getExternalStorageDirectory().getAbsolutePath() + "/TKT.jpg"));
+
+        PlugPagPrintResult result = mPlugPag().printFromFile(new PlugPagPrinterData(
+                Environment.getExternalStorageDirectory().getAbsolutePath() + "/TKT.jpg",
+                4,
+                50));
+
+        FileUtils.fileDelete(Environment.getExternalStorageDirectory().getAbsolutePath() + "/TKT.jpg");
+
+        Log.d("PlugPagPrintResult", result.getMessage());
+
+        JSObject ret = new JSObject();
+        ret.put("results", result);
         call.success(ret);
     }
 

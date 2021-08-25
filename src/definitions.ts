@@ -10,6 +10,7 @@ export interface PlugPagServiceWrapperPlugin {
   reprintStablishmentReceipt(): Promise <{results: any[]}>;
   reprintCustomerReceipt(): Promise <{results: any[]}>;
   getLastApprovedTransaction(): Promise <{results: any[]}>;
+  printTicket(): Promise <{results: any[]}>;
   createPayment(request : {
     reference: string,
     type:string, 

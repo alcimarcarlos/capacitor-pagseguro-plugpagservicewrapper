@@ -42,6 +42,12 @@ export class PlugPagServiceWrapperWeb extends WebPlugin implements PlugPagServic
     };
   }
 
+  async printTicket(): Promise<{ results: any[] }> {
+    console.log('printTicket',);
+    return {
+      results: []
+    };
+  }
   async createPayment(request: {
     reference: string,
     type:string, 
